@@ -6,11 +6,11 @@ const size = {
 
 export const theme = {
     colors: {
-        primary: '#FF9F45',
+        primary: '#FF8C19',
         secondary: '#8AA8B0',
         white: '#dedede',
         overlay: 'rgba(33,33,33,0.25)',
-        h_primary: '#EC8C32'
+        h_primary: '#EE6F05'
     },
     alerts: {
         error: '#FF5752',

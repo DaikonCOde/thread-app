@@ -18,6 +18,7 @@ function Home() {
         setStatusProgressBar((prev) => ({ value: prev.value + 1, next: true, prev: false }));
     };
     const prevQuestion = () => {
+        if (statusProgressBar.value === 0) return;
         setStatusProgressBar((prev) => ({ value: prev.value - 1, prev: true, next: false }));
     };
 
@@ -25,7 +26,7 @@ function Home() {
         <ContentHome>
             {!presentModal && (
                 <>
-                    <ProgressBar status={statusProgressBar} totalValues={7} />
+                    <ProgressBar status={statusProgressBar} totalValues={12} />
                     <button type="button" className="btn primary" onClick={nextQuestion}>
                         Next
                     </button>

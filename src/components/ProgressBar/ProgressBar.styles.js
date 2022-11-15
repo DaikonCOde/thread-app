@@ -6,7 +6,10 @@ export const ContentProgressBar = styled.div.attrs({
     max-width: 300px;
     overflow: hidden;
     margin: 0 auto 30px;
-    transition: ${({ theme }) => theme.transition.default};
+    .list {
+        transition: ${({ theme }) => theme.transition.default};
+        transform: translateX(0);
+    }
 
     .progress-value {
         min-width: 30px;
