@@ -136,7 +136,6 @@ export const GlobalStyles = createGlobalStyle`
     }
     .title {
         font-size: 1.8rem;
-        font-weight: 500;
     }
 
     .t-light {
@@ -145,6 +144,10 @@ export const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.c_text.gray}
     }
 
+    /* margin */
+    .mb-3 {
+        margin: 0 0 30px;
+    }
 
 
 

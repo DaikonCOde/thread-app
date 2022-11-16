@@ -16,7 +16,7 @@ export const theme = {
         h_secondary: '#009277'
     },
     alerts: {
-        error: '#FF5752',
+        error: '#ff0400',
         success: '#37A63E',
         info: '#0477BF',
         warning: '#F2BB16'
@@ -36,7 +36,8 @@ export const theme = {
     },
     shadow: {
         box: '0px 4px 8px 0px rgb(79 79 79 / 30%)',
-        nav: '0px -3px 8px 0px rgba(0, 0, 0, 0.05)'
+        input: '0px 2px 4px 0px rgb(79 79 79 / 20%)',
+        input_focus: '0px 4px 8px 5px rgb(0 203 171 / 40%)'
     },
     padding: {
         input: '9px 15px',

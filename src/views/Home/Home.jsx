@@ -5,6 +5,7 @@ import { PresentModal } from '../../modals/Present';
 import { ProgressBar } from '../../components/ProgressBar';
 import { Questions } from '../../components/Questions';
 import { ImageUploader } from '../../components/ImageUploader';
+import { ContactForm } from '../../components/ContactForm';
 
 // db
 import QuestionsData from '../../db/questions.json';
@@ -119,7 +120,7 @@ function Home() {
                 </>
             )}
             {uploadImage && <ImageUploader onClickContinue={handleImageUploader} />}
-            {/* {!uploadImage && !statusQuestions.isCompleted && <ImageUploader />} */}
+            {!uploadImage && statusQuestions.isCompleted && <ContactForm />}
 
             <PresentModal show={presentModal} onClose={() => setPresentModal(!presentModal)} />
         </ContentHome>

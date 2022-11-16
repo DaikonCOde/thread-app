@@ -7,6 +7,7 @@ import { Loader } from '../components/Loader';
 import { PageLayout } from '../layout';
 // pages
 const Home = lazy(() => import('../views/Home/Home'));
+const ClinicsFound = lazy(() => import('../views/ClinicsFound/ClinicsFound'));
 
 function Router() {
     return (
@@ -15,6 +16,7 @@ function Router() {
                 <Routes>
                     <Route path="/" element={<PageLayout />}>
                         <Route index element={<Home />} />
+                        <Route path="/clinics" element={<ClinicsFound />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

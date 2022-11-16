@@ -20,6 +20,8 @@ code {
 
 input {
     outline: none;
+    border: none;
+    
 }
 
 button {
@@ -42,9 +44,9 @@ h4,
 h5,
 p,
 input,
-textarea {
+textarea, label {
     margin: 0;
-    color: #212121
+    color: #313732
 }
 
 ul, ol {

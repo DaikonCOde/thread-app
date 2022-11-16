@@ -56,7 +56,7 @@ function Questions({ question, onClickQuestion, listAnswer, typeAction }) {
     return (
         <ContentQuestions>
             <div className={`${animateMode || 'init'}`}>
-                <h4 className="title t-center">{question.label}</h4>
+                <h4 className="title t-center fw-5">{question.label}</h4>
                 <ul className={`list-options d-flex center column gap-2  `}>
                     {question.options.map((q) => (
                         <li key={q.id} className="content-question">
