@@ -8,7 +8,8 @@ export const theme = {
     colors: {
         primary: '#FF8C19',
         secondary: '#8AA8B0',
-        white: '#dedede',
+        gray: '#dedede',
+        white: '#f5f5f5',
         overlay: 'rgba(33,33,33,0.25)',
         h_primary: '#EE6F05'
     },
@@ -32,7 +33,7 @@ export const theme = {
         50: '50%'
     },
     shadow: {
-        box: '0px 4px 10px 0px rgba(0, 0, 0, 0.1)',
+        box: '0px 4px 8px 0px rgb(79 79 79 / 30%)',
         nav: '0px -3px 8px 0px rgba(0, 0, 0, 0.05)'
     },
     padding: {

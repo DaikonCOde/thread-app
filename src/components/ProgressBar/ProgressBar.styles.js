@@ -16,7 +16,7 @@ export const ContentProgressBar = styled.div.attrs({
         height: 30px;
         border-radius: ${({ theme }) => theme.rounded[50]};
         border: 4px solid ${({ theme }) => theme.c_text.ligth};
-        background: ${({ theme }) => theme.colors.white};
+        background: ${({ theme }) => theme.colors.gray};
         position: relative;
         transition: ${({ theme }) => theme.transition.default};
 
@@ -47,7 +47,7 @@ export const ContentProgressBar = styled.div.attrs({
 
     .active {
         border-color: ${({ theme }) => theme.colors.primary};
-        background: white;
+        background: ${({ theme }) => theme.colors.white};
 
         &::before {
             background: ${({ theme }) => theme.colors.primary};

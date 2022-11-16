@@ -2,94 +2,88 @@
     {
         "label": "¿Qué aspecto tiene su pérdida de pelo?",
         "id_question": 1001,
+        "prev": null,
         "options": [
             {
                 "id": 1,
                 "src_img": null,
                 "label": "Hair_Loss_1.svg",
-                "next": 1002,
-                "prev": null
+                "next": 1002
             },
             {
                 "id": 2,
                 "src_img": null,
                 "label": "Hair_Loss_2.svg",
-                "next": 1002,
-                "prev": null
+                "next": 1002
             },
             {
                 "id": 3,
                 "src_img": null,
                 "label": "Hair_Loss_3.svg",
-                "next": 1002,
-                "prev": null
+                "next": 1002
             },
             {
                 "id": 4,
                 "src_img": null,
                 "label": "Mi cabello perdido es diferente",
-                "next": 1002,
-                "prev": null
+                "next": 1002
             }
         ]
     },
     {
         "label": "¿Se ha sometido alguna vez a un trasplante de pelo 1002?",
         "id_question": 1002,
+        "prev": 1001,
         "options": [
             {
                 "id": 11,
                 "src_img": "Yes.svg",
                 "label": "Si",
-                "next": 1003,
-                "prev": 1001
+                "next": 1003
             },
             {
                 "id": 12,
                 "src_img": "No.svg",
                 "label": "No",
-                "next": 1004,
-                "prev": 1001
+                "next": 1004
             }
         ] 
     },
     {
         "label": "¿Otras personas de su familia sufren de pérdida de cabello 1003?",
         "id_question": 1003,
+        "prev": 1002,
         "options": [
             {
                 "id": 11,
                 "src_img": "Yes.svg",
                 "label": "Si",
-                "next": 1004,
-                "prev": 1002
+                "next": 1004
             },
             {
                 "id": 12,
                 "src_img": "No.svg",
                 "label": "No",
-                "next": 1002,
-                "prev": 1002
+                "next": 1002
             }
         ] 
     },
     {
         "label": "¿Hace cuántos años  que comenzó su pérdida de cabello 1004?",
         "id_question": 1004,
+        "prev": 1002,
         "options": [
             {
                 "id": 11,
                 "src_img": "Yes.svg",
                 "label": "Si",
-                "next": 1002,
-                "prev": 1001
+                "next": false
             },
             {
                 "id": 12,
                 "src_img": "No.svg",
                 "label": "No",
-                "next": 1002,
-                "prev": 1002
+                "next": false
             }
         ] 
     }

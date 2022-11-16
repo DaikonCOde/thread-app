@@ -131,6 +131,10 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1.6rem;
         font-weight: 500;
     }
+    .title {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
 
     .t-light {
         font-size: 1.2rem;
