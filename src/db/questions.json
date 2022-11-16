@@ -31,7 +31,7 @@
         ]
     },
     {
-        "label": "¿Se ha sometido alguna vez a un trasplante de pelo 1002?",
+        "label": "¿Se ha sometido alguna vez a un trasplante de pelo?",
         "id_question": 1002,
         "prev": 1001,
         "options": [
@@ -45,46 +45,271 @@
                 "id": 12,
                 "src_img": "No.svg",
                 "label": "No",
-                "next": 1004
+                "next": 1003
             }
         ] 
     },
     {
-        "label": "¿Otras personas de su familia sufren de pérdida de cabello 1003?",
+        "label": "¿Otras personas de su familia sufren de pérdida de cabello?",
         "id_question": 1003,
         "prev": 1002,
         "options": [
             {
-                "id": 11,
+                "id": 21,
                 "src_img": "Yes.svg",
                 "label": "Si",
                 "next": 1004
             },
             {
-                "id": 12,
+                "id": 22,
                 "src_img": "No.svg",
                 "label": "No",
-                "next": 1002
+                "next": 1004
             }
         ] 
     },
     {
-        "label": "¿Hace cuántos años  que comenzó su pérdida de cabello 1004?",
+        "label": "¿Hace cuántos años  que comenzó su pérdida de cabello?",
         "id_question": 1004,
-        "prev": 1002,
+        "prev": 1003,
         "options": [
             {
-                "id": 11,
+                "id": 31,
+                "src_img": "Yes.svg",
+                "label": "Si",
+                "next": 1005
+            },
+            {
+                "id": 32,
+                "src_img": "No.svg",
+                "label": "No",
+                "next": 1005
+            }
+        ] 
+    },
+    {
+        "label": "¿Cual es tu edad?",
+        "id_question": 1005,
+        "prev": 1004,
+        "options": [
+            {
+                "id": 41,
+                "src_img": "Younger_than_24.svg",
+                "label": "Menor de 24",
+                "next": 1006
+            },
+            {
+                "id": 42,
+                "src_img": "24-30.svg",
+                "label": "24-30",
+                "next": 1006
+            },
+            {
+                "id": 43,
+                "src_img": "30-45.svg",
+                "label": "30-45",
+                "next": 1006
+            },
+            {
+                "id": 44,
+                "src_img": "Older_than_45.svg",
+                "label": "Mayor de 45" ,
+                "next": 1006
+            }
+        ] 
+    },
+    {
+        "label": "¿Está tratando actualmente su pérdida de cabello con finasteride o minoxidil?",
+        "id_question": 1006,
+        "prev": 1005,
+        "options": [
+            {
+                "id": 51,
+                "src_img": "Yes.svg",
+                "label": "Si",
+                "next": 1007
+            },
+            {
+                "id": 52,
+                "src_img": "No.svg",
+                "label": "No",
+                "next": 1007
+            }
+        ]
+    },
+    {
+        "label": "¿Cuándo quiere su trasplante capilar?",
+        "id_question": 1007,
+        "prev": 1006,
+        "options": [
+            {
+                "id": 61,
+                "src_img": "As_soon_as_possible.svg",
+                "label": "Lo más pronto posible",
+                "next": 1008
+            },
+            {
+                "id": 62,
+                "src_img": "In_the_next_six_month.svg",
+                "label": "En los siguiente 6 meses",
+                "next": 1008
+            },
+            {
+                "id": 63,
+                "src_img": "I_just_want_to_inform_myself.svg",
+                "label": "Sólo quiero informarme",
+                "next": 1008
+            }
+        ]
+    },
+    {
+        "label": "¿Cuál es el criterio más importante para usted a la hora de elegir un médico?",
+        "id_question": 1008,
+        "prev": 1007,
+        "options": [
+            {
+                "id": 71,
+                "src_img": "Quality_&_Service.svg",
+                "label": "Calidad y servicio",
+                "next": 1009
+            },
+            {
+                "id": 72,
+                "src_img": "Low_Price.svg",
+                "label": "Precios bajos",
+                "next": 1009
+            },
+            {
+                "id": 73,
+                "src_img": "Distance_to_the_Doctor.svg",
+                "label": "Distancia del médico",
+                "next": 1009
+            }
+        ]
+    },
+    {
+        "label": "¿Cuán largo puede ser el viaje al médico?",
+        "id_question": 1009,
+        "prev": 1008,
+        "options": [
+            {
+                "id": 81,
+                "src_img": "Up_to_20_km.svg",
+                "label": "Hasta 20Km",
+                "next": 1010
+            },
+            {
+                "id": 82,
+                "src_img": "Up_to_100_km.svg",
+                "label": "Hasta 100Km",
+                "next": 1010
+            },
+            {
+                "id": 83,
+                "src_img": "I_do_not_care.svg",
+                "label": "No es de importancia",
+                "next": 1010
+            }
+        ]
+    },
+    {
+        "label": "¿Estarías dispuesto a ir al extranjero?",
+        "id_question": 1010,
+        "prev": 1009,
+        "options": [
+            {
+                "id": 91,
+                "src_img": "Yes.svg",
+                "label": "Si",
+                "next": 1011
+            },
+            {
+                "id": 92,
+                "src_img": "No.svg",
+                "label": "No",
+                "next": 1011
+            },
+            {
+                "id": 93,
+                "src_img": "Uncertain.svg",
+                "label": "No estoy seguro",
+                "next": 1011
+            }
+        ]
+    },
+    {
+        "label": "¿En qué zona vives?",
+        "id_question": 1011,
+        "prev": 1010,
+        "options": [
+            {
+                "id": 101,
+                "src_img": "Spain.svg",
+                "label": "España",
+                "next": 1012
+            },
+            {
+                "id": 102,
+                "src_img": "Flag_USA.svg",
+                "label": "America",
+                "next": 1012
+            },
+            {
+                "id": 103,
+                "src_img": "Flag_Europe.svg",
+                "label": "Europa",
+                "next": 1012
+            },
+            {
+                "id": 104,
+                "src_img": "Flag_Other.svg",
+                "label": "Otro",
+                "next": 1012
+            }
+        ]
+    },
+    {
+        "label": "¿Por qué medio quieres que te contactemos?",
+        "id_question": 1012,
+        "prev": 1011,
+        "options": [
+            {
+            "id": 111,
+            "src_img": "whatsapp.svg",
+            "label": "WhatsApp",
+            "next": 1013
+            },
+            {
+            "id": 112,
+            "src_img": "mail.svg",
+            "label": "Mail",
+            "next": 1013
+            },
+            {
+            "id": 113,
+            "src_img": "Phone.svg",
+            "label": "Llamada telefónica",
+            "next": 1013
+            }
+        ]
+    },
+    {
+        "label": "¿Tienes fotos de tu perdida de cabello?",
+        "id_question": 1013,
+        "prev": 1012,
+        "options": [
+            {
+                "id": 121,
                 "src_img": "Yes.svg",
                 "label": "Si",
                 "next": false
             },
             {
-                "id": 12,
+                "id": 122,
                 "src_img": "No.svg",
                 "label": "No",
                 "next": false
             }
-        ] 
+        ]
     }
 ]

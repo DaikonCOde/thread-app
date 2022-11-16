@@ -5,11 +5,9 @@ import IconClose from '../../assets/icons/close.svg';
 
 function ModalLayout({ children, onClose, show, iconClose = true }) {
     if (!show) {
-        document.getElementById('root').classList.remove('no-scroll');
         return null;
     }
 
-    document.getElementById('root').classList.add('no-scroll');
     return createPortal(
         <ContentModal>
             <div className="content-modal">

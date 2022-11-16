@@ -13,6 +13,7 @@ import { ContentQuestions } from './Question.styles';
 
 function Questions({ question, onClickQuestion, listAnswer, typeAction }) {
     const [animateMode, setAnimateMode] = useState('');
+    const [idOptionSelected, setIdOptionSelected] = useState(false);
 
     useEffect(() => {
         // si next es true colocar la clase next
@@ -28,16 +29,22 @@ function Questions({ question, onClickQuestion, listAnswer, typeAction }) {
     }, [typeAction]);
 
     // filtrar si existe respuesta para la pregunta actual
-    const thereIsAnswerToQuestion = listAnswer.filter(
-        (answer) => answer.id_question === question.id_question
-    );
-    // si existe respuesta retorna el id de la opción y sino false
-    const getIdOptionSelected = thereIsAnswerToQuestion.length
-        ? thereIsAnswerToQuestion[0].id_option
-        : false;
+    useEffect(() => {
+        const thereIsAnswerToQuestion = listAnswer.filter(
+            (answer) => answer.id_question === question.id_question
+        );
+        // si existe respuesta retorna el id de la opción y sino false
+        const getIdOptionSelected = thereIsAnswerToQuestion.length
+            ? thereIsAnswerToQuestion[0].id_option
+            : false;
+
+        setIdOptionSelected(getIdOptionSelected);
+    }, [listAnswer, question]);
 
     // función para agregar un delay donde se anima las preguntas
     const delayOnClickOnOption = (idOption) => {
+        // eliminar clase de pregunta seleccionada
+        setIdOptionSelected(false);
         // clase para eliminar y pasar a la siguiente pregunta
         setAnimateMode('exit');
         setTimeout(() => {
@@ -48,23 +55,23 @@ function Questions({ question, onClickQuestion, listAnswer, typeAction }) {
 
     return (
         <ContentQuestions>
-            <h4 className="title t-center">{question.label}</h4>
-            <ul className={`list-options d-flex center column gap-2 ${animateMode || 'init'} `}>
-                {question.options.map((q) => (
-                    <li key={q.id} className="content-question">
-                        <button
-                            type="button"
-                            className={`question ${
-                                getIdOptionSelected && getIdOptionSelected === q.id
-                                    ? 'selected'
-                                    : ''
-                            }`}
-                            onClick={() => delayOnClickOnOption(q.id)}>
-                            <span className="f-12">{q.label}</span>
-                        </button>
-                    </li>
-                ))}
-            </ul>
+            <div className={`${animateMode || 'init'}`}>
+                <h4 className="title t-center">{question.label}</h4>
+                <ul className={`list-options d-flex center column gap-2  `}>
+                    {question.options.map((q) => (
+                        <li key={q.id} className="content-question">
+                            <button
+                                type="button"
+                                className={`question ${
+                                    idOptionSelected && idOptionSelected === q.id ? 'selected' : ''
+                                }`}
+                                onClick={() => delayOnClickOnOption(q.id)}>
+                                <span className="f-12">{q.label}</span>
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </ContentQuestions>
     );
 }
