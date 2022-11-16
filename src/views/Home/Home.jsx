@@ -8,6 +8,7 @@ import { Questions } from '../../components/Questions';
 // db
 import QuestionsData from '../../db/questions.json';
 import { ContentHome } from './Home.styles';
+import { ImageUploader } from '../../components/ImageUploader';
 
 function Home() {
     // lista de preguntas
@@ -23,7 +24,7 @@ function Home() {
         current_question: listQuestions[0],
         prev_question: null,
         answer: [],
-        isCompleted: false
+        isCompleted: true
     });
 
     const nextQuestion = () => {
@@ -85,26 +86,26 @@ function Home() {
 
     return (
         <ContentHome>
-            {!presentModal && (
+            {!presentModal && !statusQuestions.isCompleted ? (
                 <>
                     <ProgressBar status={statusProgressBar} totalValues={listQuestions.length} />
-                    {!statusQuestions.isCompleted && (
-                        <Questions
-                            question={statusQuestions.current_question}
-                            onClickQuestion={onClickQuestion}
-                            listAnswer={statusQuestions.answer}
-                            typeAction={{
-                                next: statusProgressBar.next,
-                                prev: statusProgressBar.prev
-                            }}
-                        />
-                    )}
-                    {statusProgressBar.value && !statusQuestions.isCompleted ? (
+                    <Questions
+                        question={statusQuestions.current_question}
+                        onClickQuestion={onClickQuestion}
+                        listAnswer={statusQuestions.answer}
+                        typeAction={{
+                            next: statusProgressBar.next,
+                            prev: statusProgressBar.prev
+                        }}
+                    />
+                    {statusProgressBar.value ? (
                         <button type="button" className="btn primary" onClick={prevQuestion}>
                             prev
                         </button>
                     ) : null}
                 </>
+            ) : (
+                <ImageUploader />
             )}
 
             <PresentModal show={presentModal} onClose={() => setPresentModal(!presentModal)} />

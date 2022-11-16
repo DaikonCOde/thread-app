@@ -7,11 +7,13 @@ const size = {
 export const theme = {
     colors: {
         primary: '#FF8C19',
-        secondary: '#8AA8B0',
+        secondary: '#00CBAB',
+        bg_black: '#8AA8B0',
         gray: '#dedede',
         white: '#f5f5f5',
         overlay: 'rgba(33,33,33,0.25)',
-        h_primary: '#EE6F05'
+        h_primary: '#EE6F05',
+        h_secondary: '#009277'
     },
     alerts: {
         error: '#FF5752',

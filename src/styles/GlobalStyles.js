@@ -41,6 +41,9 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: space-between;
         align-items: center;
     }
+    .d-flex.wrap {
+        flex-wrap: wrap;
+    }
     .gap-2 {
         gap: 20px
     }
@@ -145,7 +148,9 @@ export const GlobalStyles = createGlobalStyle`
 
 
 
-    /* components */
+    /*   components   */
+
+    /* buttons styles*/
     .btn {
         border-radius: ${({ theme }) => theme.rounded.s};
         text-align: center;
@@ -157,7 +162,7 @@ export const GlobalStyles = createGlobalStyle`
         display: block;
         text-transform: uppercase;
         transition: ${({ theme }) => theme.transition.default};
-        cursor: pointer;
+        /* cursor: pointer; */
         &:hover {
             background: ${({ theme }) => theme.colors.h_primary};
         }
@@ -168,19 +173,17 @@ export const GlobalStyles = createGlobalStyle`
     .primary {
         background: ${({ theme }) => theme.colors.primary};
     }
-
-    .card {
-        background: ${({ theme }) => theme.c_text.white};
-        border-radius: ${({ theme }) => theme.rounded.l};
-        padding: 16px;
-        margin: 0 auto 15px;
-        box-shadow: ${({ theme }) => theme.shadow.box};
-        max-width: 450px;
-        width: 100%;
-        &last-child {
-            margin: 0;
+    .border {
+        border: 1px solid ${({ theme }) => theme.colors.secondary};
+        color: ${({ theme }) => theme.colors.secondary};
+        &:hover {
+            border: 1px solid ${({ theme }) => theme.colors.h_secondary};
+            color: ${({ theme }) => theme.colors.h_secondary};
+            background: transparent;
         }
     }
+
+    /* overlay app */
 
     .overlay {
         top: 0;
