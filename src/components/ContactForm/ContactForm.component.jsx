@@ -1,19 +1,26 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
+// hooks
 import { useState } from 'react';
 // import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
+import { doc, setDoc } from 'firebase/firestore';
+import { useValidateFields } from '../../hooks/useValidateFields';
+// firebase
+import { firestore } from '../../db/firebase';
+// components
 import { CustomInput } from '../CustomInput';
 import { Loader } from '../Loader';
-
-import { useValidateFields } from '../../hooks/useValidateFields';
+import { HasImageUpload } from '../../modals/HasImageUpload';
+import { Error } from '../../modals/Error';
 
 import { ContentContactForm } from './ContactForm.styles';
 
-function ContactForm({ answer }) {
+function ContactForm() {
     const navigate = useNavigate();
-
     const [validateError, setValidateError, validateFields] = useValidateFields();
     const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [uploadImage, setUploadImage] = useState(false);
+
     const [stateForm, setStateForm] = useState({
         gender: 'Mr',
         name: '',
@@ -38,41 +45,80 @@ function ContactForm({ answer }) {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const existErrors = validateFields(stateForm);
-
-        if (existErrors) return;
+    const SaveDataUser = async () => {
         setIsLoading(true);
 
-        const formData = {
-            ...stateForm,
-            reply_email: import.meta.env.VITE_EMAIL_USER,
-            answers: {
-                ...answer
-            }
-        };
+        try {
+            // obtener las respuestas guardadas en local storage
+            const parseAnswerUser = await JSON.parse(localStorage.getItem('answer_user'));
+            // parsear data que se va a guardar
+            const formData = {
+                ...stateForm,
+                reply_email: 'daikon.code@gmail.com',
+                answers: {
+                    ...parseAnswerUser
+                },
+                images: []
+            };
+            // crear referencia a la coleccion donde se debe de guardar
+            const userRef = doc(firestore, 'users', stateForm.email);
 
-        console.log(formData);
-        navigate('/clinics');
+            localStorage.setItem('key_user', stateForm.email);
+            // setear data
+            await setDoc(userRef, formData);
+
+            // preguntar si quiere subir imagenes
+            setUploadImage(true);
+            // terminar carga
+            setIsLoading(false);
+        } catch (error) {
+            setIsError(true);
+            setIsLoading(false);
+        }
 
         // emailjs
-        //     .send('recoveryourhair_147490', 'template_zvcer2f', formData, 'r8a2yZnD5hgKfn1da')
+        //     .send(
+        //         'recoveryourhair_147490',
+        //         'template_zvcer2f',
+        //         formData,
+        //         'r8a2yZnD5hgKfn1da'
+        //     )
         //     .then((response) => {
+        //         console.log(response);
         //         setIsLoading(false);
         //         navigate('/gracias', { replace: true });
         //     })
         //     .catch((error) => console.log(error));
     };
 
+    /*
+        response: boolean
+    */
+    const handleUploadImage = (response) => {
+        setUploadImage(false);
+        // si response es true redirigir a upload-image para subir sus fotos
+        if (response) {
+            navigate('/upload-image');
+        } else {
+            // sino rediricgir a la pagina de gracias
+            navigate('/tranks');
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // validar errores
+        const existErrors = validateFields(stateForm);
+        if (existErrors) return;
+
+        // si no hay errores ejectuar la función saveDataUser
+        SaveDataUser();
+    };
+
     return (
         <ContentContactForm>
-            <h3 className="title t-center mb-3">
-                Encontramos 3 clínicas para ti.
-                <br />
-                Para verlas déjanos tus datos
-            </h3>
+            <h3 className="title t-center mb-3">Déjanos tus datos</h3>
             <form onSubmit={handleSubmit}>
                 <div className="select-gender">
                     <label htmlFor="gender-mr">
@@ -131,15 +177,6 @@ function ContactForm({ answer }) {
                     label="Correo electrónico"
                 />
                 <CustomInput
-                    name="address"
-                    value={stateForm.address}
-                    handleChange={handleInputChange}
-                    validate={validateError}
-                    placeholder="¿Cuál es tu localidad?"
-                    id="input-address"
-                    label="Dirección"
-                />
-                <CustomInput
                     name="phone"
                     value={stateForm.phone}
                     handleChange={handleInputChange}
@@ -148,12 +185,49 @@ function ContactForm({ answer }) {
                     id="input-phone"
                     label="Número telefónico"
                 />
+                <CustomInput
+                    name="address"
+                    value={stateForm.address}
+                    handleChange={handleInputChange}
+                    validate={validateError}
+                    placeholder="¿Cuál es tu localidad?"
+                    id="input-address"
+                    label="Localidad"
+                />
+
+                <div className="accept-terms f-12">
+                    <label htmlFor="terms">
+                        <input
+                            type="checkbox"
+                            name="terms"
+                            id="terms"
+                            onChange={() =>
+                                setStateForm((prev) => ({
+                                    ...prev,
+                                    acceptTerms: !prev.acceptTerms
+                                }))
+                            }
+                        />
+                        Acepto los términos y condiciones
+                    </label>
+                    {validateError.terms.error && (
+                        <span className="error-message d-block">
+                            {validateError.terms.message}{' '}
+                        </span>
+                    )}
+                </div>
 
                 <button className="btn primary" type="submit">
                     Continuar
                 </button>
             </form>
-            {isLoading && <Loader />}
+            <HasImageUpload
+                show={uploadImage}
+                onClose={() => setUploadImage(false)}
+                handleResponse={handleUploadImage}
+            />
+            <Loader loading={isLoading} />
+            <Error show={isError} onClose={() => setIsError(false)} />
         </ContentContactForm>
     );
 }

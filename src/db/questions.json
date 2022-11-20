@@ -6,20 +6,20 @@
         "options": [
             {
                 "id": 1,
-                "src_img": null,
-                "label": "Hair_Loss_1.svg",
+                "src_img": "Hair_Loss_1.svg",
+                "label": null,
                 "next": 1002
             },
             {
                 "id": 2,
-                "src_img": null,
-                "label": "Hair_Loss_2.svg",
+                "src_img": "Hair_Loss_2.svg",
+                "label": null,
                 "next": 1002
             },
             {
                 "id": 3,
-                "src_img": null,
-                "label": "Hair_Loss_3.svg",
+                "src_img": "Hair_Loss_3.svg",
+                "label": null,
                 "next": 1002
             },
             {
@@ -75,14 +75,20 @@
         "options": [
             {
                 "id": 31,
-                "src_img": "Yes.svg",
-                "label": "Si",
+                "src_img": "Less_than_5.svg",
+                "label": "Menos de 5",
                 "next": 1005
             },
             {
                 "id": 32,
-                "src_img": "No.svg",
-                "label": "No",
+                "src_img": "5-10.svg",
+                "label": "5-10",
+                "next": 1005
+            },
+            {
+                "id": 33,
+                "src_img": "More_than_10.svg",
+                "label": "Más de 10" ,
                 "next": 1005
             }
         ] 
@@ -277,38 +283,19 @@
             "id": 111,
             "src_img": "whatsapp.svg",
             "label": "WhatsApp",
-            "next": 1013
+            "next": false
             },
             {
             "id": 112,
             "src_img": "mail.svg",
             "label": "Mail",
-            "next": 1013
+            "next": false
             },
             {
             "id": 113,
             "src_img": "Phone.svg",
             "label": "Llamada telefónica",
-            "next": 1013
-            }
-        ]
-    },
-    {
-        "label": "¿Tienes fotos de tu perdida de cabello?",
-        "id_question": 1013,
-        "prev": 1012,
-        "options": [
-            {
-                "id": 121,
-                "src_img": "Yes.svg",
-                "label": "Si",
-                "next": false
-            },
-            {
-                "id": 122,
-                "src_img": "No.svg",
-                "label": "No",
-                "next": false
+            "next": false
             }
         ]
     }

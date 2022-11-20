@@ -186,6 +186,15 @@ export const GlobalStyles = createGlobalStyle`
         }
     }
 
+    /* Errors */
+    .error-message {
+        font-size: 10px;
+        font-weight: 600;
+        color: ${({ theme }) => theme.alerts.error};
+        display: block;
+        margin: 3px 0 0 0;
+        letter-spacing: 1.2px;
+    }
     /* overlay app */
 
     .overlay {

@@ -55,18 +55,23 @@ function Questions({ question, onClickQuestion, listAnswer, typeAction }) {
 
     return (
         <ContentQuestions>
-            <div className={`${animateMode || 'init'}`}>
+            <div className={`wrapper  ${animateMode || 'init'}`}>
                 <h4 className="title t-center fw-5">{question.label}</h4>
-                <ul className={`list-options d-flex center column gap-2  `}>
+                <ul className={`list-options d-flex center gap-2  `}>
                     {question.options.map((q) => (
-                        <li key={q.id} className="content-question">
+                        <li
+                            key={q.id}
+                            className={`content-question ${
+                                !q.src_img || !q.label ? 'square' : ''
+                            }  `}>
                             <button
                                 type="button"
-                                className={`question ${
+                                className={`question d-flex center ${
                                     idOptionSelected && idOptionSelected === q.id ? 'selected' : ''
-                                }`}
+                                } `}
                                 onClick={() => delayOnClickOnOption(q.id)}>
-                                <span className="f-12">{q.label}</span>
+                                {q.src_img && <img src={`/img/${q.src_img}`} alt="icon" />}
+                                {q.label && <span className="f-14 d-bock">{q.label}</span>}
                             </button>
                         </li>
                     ))}

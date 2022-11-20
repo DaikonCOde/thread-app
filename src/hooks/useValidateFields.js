@@ -21,6 +21,10 @@ export const useValidateFields = () => {
         address: {
             error: false,
             message: ''
+        },
+        terms: {
+            error: false,
+            message: ''
         }
     });
 
@@ -31,6 +35,7 @@ export const useValidateFields = () => {
         const messageRequired = 'Este campo es requerido';
         const messageEmail = 'Coloca un correo electrónico valido';
         const messagePhone = 'Coloca un número telefónico valido';
+        const messageTerms = 'Debes aceptar los terminos y condiciones';
 
         if (stateForm.name.length === 0) {
             errors.name.error = true;
@@ -83,6 +88,16 @@ export const useValidateFields = () => {
         } else {
             errors.address.error = false;
             errors.address.message = '';
+            error = false;
+        }
+
+        if (!stateForm.acceptTerms) {
+            errors.terms.error = true;
+            errors.terms.message = messageTerms;
+            error = true;
+        } else {
+            errors.terms.error = false;
+            errors.terms.message = '';
             error = false;
         }
 

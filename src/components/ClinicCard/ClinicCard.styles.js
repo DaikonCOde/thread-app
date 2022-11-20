@@ -7,7 +7,8 @@ export const ContentClinicCard = styled.div`
     padding: 25px 30px;
     background: url(${({ bg }) => bg}) center no-repeat;
     background-size: cover;
-    margin: 0 auto 40px;
+    margin: 0 auto;
+    max-width: 350px;
     position: relative;
     .overlay {
         width: 100%;

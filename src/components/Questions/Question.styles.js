@@ -47,12 +47,38 @@ export const ContentQuestions = styled.div.attrs({
     className: 'content-questions'
 })`
     margin: 80px auto 0;
-    width: 100%;
-    padding: 0 5vw;
+    width: 90%;
+    max-width: 700px;
+
+    padding: 0 5vw 30px;
     overflow: hidden;
+    background: ${({ theme }) => theme.colors.white};
+    border-radius: ${({ theme }) => theme.rounded.m};
+    padding: 40px 20px;
+    box-shadow: 0 0px 6px 15px rgb(0 0 0 / 20%);
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 72vh;
+        width: 100%;
+        flex-direction: column;
+        max-width: 700px;
+        @media ${({ theme }) => theme.breakpoints.tablet} {
+            height: 70vh;
+        }
+    }
+
+    .title {
+        position: absolute;
+        top: 0;
+    }
 
     .list-options {
-        margin: 30px 0 0;
+        margin: 50px 0 0;
+        flex-wrap: wrap;
+        width: 100%;
     }
     /* animacion inicial y al entrar nuevos components */
     .init,
@@ -74,22 +100,49 @@ export const ContentQuestions = styled.div.attrs({
 
     .content-question {
         width: 100%;
+        max-width: 350px;
     }
 
     .question {
-        padding: 20px 25px;
-        background: ${({ theme }) => theme.colors.white};
+        padding: 10px 25px;
+        background: ${({ theme }) => theme.c_text.white};
         border-radius: 10px;
         width: 100%;
         box-shadow: ${({ theme }) => theme.shadow.box};
         transition: ${({ theme }) => theme.transition.default};
         border: 3px solid transparent;
+        gap: 10px;
         &:hover {
             transform: translateY(-4px);
-            border: 2px solid ${({ theme }) => theme.colors.primary};
+            border: 3px solid ${({ theme }) => theme.alerts.blue};
+            box-shadow: 0 5px 20px 3px #0000004d;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        span {
+            width: 100%;
+        }
+    }
+
+    .square {
+        width: 31.4vw;
+        max-width: 220px;
+        height: 120px;
+        .question {
+            padding: 10px;
+            height: 100%;
+            justify-content: center;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
     .selected {
-        border: 3px solid ${({ theme }) => theme.colors.primary};
+        border: 3px solid ${({ theme }) => theme.alerts.blue};
+        box-shadow: 0 5px 20px 3px #0000004d;
     }
 `;

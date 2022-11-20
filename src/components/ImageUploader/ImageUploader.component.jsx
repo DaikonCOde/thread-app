@@ -1,24 +1,75 @@
+// hooks
 import { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
-
+import { useNavigate, Navigate } from 'react-router-dom';
+// firebase
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { doc, updateDoc } from 'firebase/firestore';
+import { storage, firestore } from '../../db/firebase';
+// componets
+import { Loader } from '../Loader';
+import { Error } from '../../modals/Error';
+// assets
 import CloseIcon from '../../assets/icons/close.svg';
 import { ContentImageUploader } from './ImageUploader.styles';
 
-function ImageUploader({ onClickContinue }) {
+function ImageUploader() {
+    const navigate = useNavigate();
     const [images, setImages] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
+
     const maxNumber = 9;
-    const onChange = (imageList, addUpdateIndex) => {
+    const onChangeImageUploader = (imageList) => {
         // data for submit
-        console.log(imageList, addUpdateIndex);
         setImages(imageList);
     };
+
+    const uploadImageToStorage = async () => {
+        setIsLoading(true);
+
+        const arrayWithImageUrls = [];
+
+        Promise.all(
+            images.map(async ({ file }) => {
+                const imageRef = ref(storage, `pacients/${file.name}`);
+                await uploadBytesResumable(imageRef, file)
+                    .then(async (snapshot) => {
+                        // Let's get a download URL for the file.
+                        await getDownloadURL(snapshot.ref).then((url) => {
+                            arrayWithImageUrls.push(url);
+                            // ...
+                        });
+                    })
+                    .catch(() => {
+                        setIsError(true);
+                    });
+            })
+        ).then(async () => {
+            const KEY_USER = localStorage.getItem('key_user');
+
+            if (!KEY_USER) return;
+
+            const refUser = doc(firestore, 'users', KEY_USER);
+            await updateDoc(refUser, { images: arrayWithImageUrls });
+
+            setIsLoading(false);
+            localStorage.clear();
+            navigate('/thanks');
+        });
+    };
+
+    if (!localStorage.getItem('key_user')) {
+        return <Navigate to="/" />;
+    }
+
     return (
         <ContentImageUploader>
-            <h4 className="title t-center">Sube tus fotos aquí.</h4>
+            <h4 className="title t-center t-white">Sube tus fotos aquí.</h4>
             <ImageUploading
                 multiple
                 value={images}
-                onChange={onChange}
+                onChange={onChangeImageUploader}
                 maxNumber={maxNumber}
                 dataURLKey="data_url"
                 acceptType={['jpg', 'png', 'jpeg']}>
@@ -63,8 +114,8 @@ function ImageUploader({ onClickContinue }) {
                                     <button
                                         type="button"
                                         className="btn primary"
-                                        onClick={onClickContinue}>
-                                        Continuar
+                                        onClick={uploadImageToStorage}>
+                                        Subir fotos
                                     </button>
                                 ) : null}
                             </div>
@@ -72,6 +123,8 @@ function ImageUploader({ onClickContinue }) {
                     );
                 }}
             </ImageUploading>
+            <Loader loading={isLoading} />
+            <Error show={isError} onClose={() => setIsError(false)} />
         </ContentImageUploader>
     );
 }

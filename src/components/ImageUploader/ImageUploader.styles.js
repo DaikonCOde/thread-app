@@ -3,12 +3,16 @@ import styled from 'styled-components';
 export const ContentImageUploader = styled.div.attrs({
     className: 'content-image-uploader'
 })`
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
     .title {
         margin: 0px 0 60px;
     }
 
     .image-uploader-wrapper {
-        width: 80vw;
+        width: 90%;
+        max-width: 500px;
         margin: 0 auto;
     }
 

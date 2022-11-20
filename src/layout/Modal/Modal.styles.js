@@ -22,6 +22,7 @@ export const ContentModal = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 10;
 
     .content-modal {
         position: relative;
@@ -50,6 +51,10 @@ export const ContentModal = styled.div`
             &:active {
                 transform: scale(0.7);
             }
+        }
+
+        @media ${({ theme }) => theme.breakpoints.tablet} {
+            width: 500px;
         }
     }
 `;

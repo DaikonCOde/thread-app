@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContentCustomInput = styled.div`
-    width: 80vw;
+    width: 100%;
     margin: 0 auto 20px;
 
     label {
@@ -21,17 +21,9 @@ export const ContentCustomInput = styled.div`
             transition: ${({ theme }) => theme.transition.default};
 
             &:focus {
-                border-color: ${({ theme }) => theme.colors.secondary};
+                border-color: ${({ theme }) => theme.colors.primary};
                 box-shadow: ${({ theme }) => theme.shadow.input_focus};
             }
         }
-    }
-
-    .error-message {
-        font-size: 10px;
-        font-weight: 600;
-        color: ${({ theme }) => theme.alerts.error};
-        display: block;
-        margin: 3px 0 0 0;
     }
 `;

@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // hooks
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // components
+import { useNavigate } from 'react-router-dom';
 import { PresentModal } from '../../modals/Present';
 import { ProgressBar } from '../../components/ProgressBar';
 import { Questions } from '../../components/Questions';
-import { ImageUploader } from '../../components/ImageUploader';
-import { ContactForm } from '../../components/ContactForm';
-
+// import { Loader } from '../../components/Loader';
+import { SearchClinics } from '../../components/SearchClinics';
 // db
 import QuestionsData from '../../db/questions.json';
 
@@ -17,8 +18,8 @@ function Home() {
     // lista de preguntas
     const listQuestions = QuestionsData;
 
+    const navigate = useNavigate();
     const [presentModal, setPresentModal] = useState(true);
-    const [uploadImage, setUploadImage] = useState(false);
     const [statusProgressBar, setStatusProgressBar] = useState({
         value: 0,
         next: false,
@@ -30,6 +31,17 @@ function Home() {
         answer: [],
         isCompleted: false
     });
+    // manejador de estado al terminar de completar el formulario
+    useEffect(() => {
+        if (statusQuestions.isCompleted) {
+            // setear respuestas del usuario en local storage
+            localStorage.setItem('answer_user', JSON.stringify(statusQuestions.answer));
+            // navegar a la página de clinicas encontradas
+            setTimeout(() => {
+                navigate('/clinics');
+            }, 3000);
+        }
+    }, [statusQuestions.isCompleted]);
 
     // funcion para ir a la siguiente pregunta
     const nextQuestion = () => {
@@ -87,13 +99,8 @@ function Home() {
             answer: saveAnswer,
             isCompleted: !getNextQuestion.length
         });
-        // 121 es el id de la repuesta 'Si' de la pregunta 1013 para saber si va a subir una foto o no
-        if (idOption === 121) setUploadImage(true);
         nextQuestion();
     };
-
-    // funcion al dar continuar al subir imagenes
-    const handleImageUploader = () => setUploadImage(false);
 
     return (
         <ContentHome>
@@ -119,8 +126,7 @@ function Home() {
                     />
                 </>
             )}
-            {uploadImage && <ImageUploader onClickContinue={handleImageUploader} />}
-            {!uploadImage && statusQuestions.isCompleted && <ContactForm />}
+            {statusQuestions.isCompleted && <SearchClinics />}
 
             <PresentModal show={presentModal} onClose={() => setPresentModal(!presentModal)} />
         </ContentHome>

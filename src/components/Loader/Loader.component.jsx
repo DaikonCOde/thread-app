@@ -2,14 +2,11 @@ import { createPortal } from 'react-dom';
 
 import { ContentLoader } from './Loader.styles';
 
-function Loader({ loading, suspense = false }) {
+function Loader({ loading }) {
     if (!loading) {
-        document.getElementById('root').classList.remove('no-scroll');
         return null;
     }
-    if (!suspense) {
-        document.getElementById('root').classList.add('no-scroll');
-    }
+
     return createPortal(
         <ContentLoader>
             <div className="content-loader">

@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
 export const ContentContactForm = styled.div`
-    width: 100%;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    background: ${({ theme }) => theme.colors.white};
+    border-radius: ${({ theme }) => theme.rounded.m};
+    margin: 50px auto 0;
+    padding: 40px 20px;
+    box-shadow: 0 0px 6px 15px rgb(0 0 0 / 20%);
 
     .select-gender {
         width: 80vw;
@@ -16,6 +23,17 @@ export const ContentContactForm = styled.div`
                 display: inline-block;
                 margin: 0 5px 0 0;
             }
+        }
+    }
+
+    .accept-terms {
+        width: 80vw;
+        margin: 0 auto;
+        label input {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 10px 0 0;
+            color: ${({ theme }) => theme.c_text.gray};
         }
     }
 

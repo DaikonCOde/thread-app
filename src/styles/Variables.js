@@ -8,6 +8,7 @@ export const theme = {
     colors: {
         primary: '#FF8C19',
         secondary: '#00CBAB',
+        bg_gradient: 'linear-gradient(91.56deg,#42a7df 1.13%,#1c3553 103.93%)',
         bg_black: '#8AA8B0',
         gray: '#dedede',
         white: '#f5f5f5',
@@ -19,7 +20,8 @@ export const theme = {
         error: '#ff0400',
         success: '#37A63E',
         info: '#0477BF',
-        warning: '#F2BB16'
+        warning: '#F2BB16',
+        blue: '#3E9DD2'
     },
     c_text: {
         principal: '#313732',
@@ -37,7 +39,7 @@ export const theme = {
     shadow: {
         box: '0px 4px 8px 0px rgb(79 79 79 / 30%)',
         input: '0px 2px 4px 0px rgb(79 79 79 / 20%)',
-        input_focus: '0px 4px 8px 5px rgb(0 203 171 / 40%)'
+        input_focus: '0px 4px 8px 5px rgb(255 140 25 / 20%)'
     },
     padding: {
         input: '9px 15px',
