@@ -23,10 +23,13 @@ export const ContentClinicCard = styled.div`
     }
 
     .logo {
-        width: 150px;
+        width: 200px;
         height: 50px;
         margin: 0 auto 30px;
-        background: ${({ theme }) => theme.colors.gray};
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
     }
 
     .text {

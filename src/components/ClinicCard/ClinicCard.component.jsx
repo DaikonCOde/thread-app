@@ -5,10 +5,20 @@ import { Clinic } from '../../modals/Clinic';
 function ClinicCard() {
     const [showDetail, setShowDetail] = useState(false);
 
+    const askForRating = () => {
+        setShowDetail(false);
+        setTimeout(() => {
+            document.querySelector('#input-name').focus();
+            window.scroll(0, 1500);
+        }, 100);
+    };
+
     return (
         <ContentClinicCard bg="/img/example-clinic.jpg">
             <div className="content">
-                <div className="logo" />
+                <div className="logo">
+                    <img src="/clinics/logo.png" alt="" />
+                </div>
                 <h4 className="text t-center">Nombre de la clinica</h4>
                 <p className="decription f-14">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam voluptatum
@@ -21,7 +31,12 @@ function ClinicCard() {
             </div>
             <div className="overlay" />
 
-            <Clinic show={showDetail} onClose={() => setShowDetail(false)} />
+            <Clinic
+                show={showDetail}
+                scroll
+                onClose={() => setShowDetail(false)}
+                askForRating={askForRating}
+            />
         </ContentClinicCard>
     );
 }

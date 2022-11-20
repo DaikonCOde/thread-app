@@ -13,7 +13,7 @@ const Thanks = lazy(() => import('../views/Thanks/Thanks'));
 
 function Router() {
     return (
-        <Suspense fallback={<Loader loading />}>
+        <Suspense fallback={<Loader loading suspense />}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<PageLayout />}>

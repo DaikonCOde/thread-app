@@ -31,7 +31,7 @@ export const ContentContactForm = styled.div`
         margin: 0 auto;
         label input {
             display: inline-block;
-            vertical-align: top;
+            vertical-align: middle;
             margin: 0 10px 0 0;
             color: ${({ theme }) => theme.c_text.gray};
         }

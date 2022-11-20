@@ -3,9 +3,13 @@ import { createPortal } from 'react-dom';
 import { ContentModal } from './Modal.styles';
 import IconClose from '../../assets/icons/close.svg';
 
-function ModalLayout({ children, onClose, show, iconClose = true }) {
+function ModalLayout({ children, onClose, show, scroll = false, iconClose = true }) {
     if (!show) {
+        document.getElementById('root').classList.remove('no-scroll');
         return null;
+    }
+    if (scroll) {
+        document.getElementById('root').classList.add('no-scroll');
     }
 
     return createPortal(

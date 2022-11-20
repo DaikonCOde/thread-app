@@ -28,7 +28,7 @@ export const ContentModal = styled.div`
         position: relative;
         background: ${({ theme }) => theme.c_text.white};
         border-radius: ${({ theme }) => theme.rounded.m};
-        width: 300px;
+        width: 90%;
         z-index: 1;
         padding: 30px;
         animation: ${animate} 0.3s linear;

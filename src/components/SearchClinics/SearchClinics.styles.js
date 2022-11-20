@@ -9,6 +9,6 @@ export const ContentSearchClinics = styled.div.attrs({
 
     background: ${({ theme }) => theme.colors.white};
     border-radius: ${({ theme }) => theme.rounded.m};
-    padding: 40px 20px;
+    padding: 40px;
     box-shadow: 0 0px 6px 15px rgb(0 0 0 / 20%);
 `;

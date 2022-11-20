@@ -91,6 +91,8 @@ export const ContentQuestions = styled.div.attrs({
     }
     /* animacion para eliminar la pregnta y pasar a la siguiente */
     .exit {
+        user-select: none;
+        pointer-events: none;
         animation: ${exitOption} 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
     }
     /* animacion para eliminar la pregnta actual y pasar a la anterior */

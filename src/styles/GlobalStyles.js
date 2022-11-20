@@ -5,7 +5,10 @@ export const GlobalStyles = createGlobalStyle`
     // global styles
     body {
         background: ${({ theme }) => theme.colors.white};
+    }
+    #root {
         scroll-behavior: smooth; 
+
     }
 
     @media ${({ theme }) => theme.breakpoints.desktop} {
@@ -43,6 +46,9 @@ export const GlobalStyles = createGlobalStyle`
     }
     .d-flex.wrap {
         flex-wrap: wrap;
+    }
+    .gap-1 {
+        gap: 10px
     }
     .gap-2 {
         gap: 20px
@@ -139,14 +145,18 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .t-light {
-        font-size: 1.2rem;
-        font-weight: 300;
+        font-size: 1.4rem;
+        font-weight: 500;
+        text-align: justify;
         color: ${({ theme }) => theme.c_text.gray}
     }
 
     /* margin */
     .mb-3 {
         margin: 0 0 30px;
+    }
+    .my-3 {
+        margin: 30px 0;
     }
 
 
