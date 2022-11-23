@@ -10,6 +10,10 @@ export const ContentContactForm = styled.div`
     padding: 40px 20px;
     box-shadow: 0 0px 6px 15px rgb(0 0 0 / 20%);
 
+    @media ${({ theme }) => theme.breakpoints.tablet} {
+        padding: 40px;
+    }
+
     .select-gender {
         width: 80vw;
         margin: 0 auto 30px;

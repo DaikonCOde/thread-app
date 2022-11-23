@@ -60,9 +60,12 @@ export const ContentClinic = styled.div`
     }
 
     .gallery {
+        gap: 15px;
         .image-item {
-            width: 80px;
-            height: 80px;
+            width: 20vw;
+            max-width: 90px;
+            height: 20vw;
+            max-height: 90px;
             border-radius: ${({ theme }) => theme.rounded.s};
             box-shadow: ${({ theme }) => theme.shadow.box};
             position: relative;
@@ -71,6 +74,13 @@ export const ContentClinic = styled.div`
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+            }
+        }
+
+        @media ${({ theme }) => theme.breakpoints.tablet} {
+            gap: 20px;
+            .image-item {
+                width: 90px;
             }
         }
     }

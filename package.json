@@ -15,6 +15,7 @@
     "react-dom": "^18.2.0",
     "react-images-uploading": "^3.1.7",
     "react-router-dom": "^6.4.3",
+    "react-simple-image-viewer": "^1.2.2",
     "styled-components": "^5.3.6"
   },
   "eslint.packageManager": "npm",
